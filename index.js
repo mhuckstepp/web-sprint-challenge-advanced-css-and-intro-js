@@ -379,12 +379,54 @@ function getHTML(data) {
 /* 💪💪💪💪💪💪 STRETCH 2: 💪💪💪💪💪💪
 Create a function called `randomize` that takes a data array as an argument and returns a the same array in a randomized order. */
 
-function randomize(/* Code here */) {
-  /* Code here */
+function randomize(arr) {
+  for (let i = 0; i < arr.length; i++) {
+    let item = arr.pop();
+    arr.splice(Math.floor(Math.random() * arr.length), 0, item);
+  }
+  return arr;
 }
+
+console.log(randomize([1, 2, 3, 4, 5, 6, 7, 8, 9, 10]));
 
 /* 💪💪💪💪💪💪 STRETCH 3: 💪💪💪💪💪💪
  Use advanced array methods (.map, .reduce, .filer) to refactor your MVP code (create an array of all artists born in the 1900s with .filter, for example) */
+
+function aliveTime(num) {
+  const aliveYes = artists.filter(function (time) {
+    let yearArr = time.years.split("-");
+    let year1 = parseInt(yearArr[0]);
+    let year2 = parseInt(yearArr[1]);
+    if (
+      year1 >= num &&
+      year1 <= num + 100 &&
+      year2 >= num &&
+      year2 <= num + 100
+    ) {
+      return true;
+    }
+  });
+  return aliveYes;
+}
+
+// console.log(aliveTime(1850));
+
+function findNation(arr, nation) {
+  const specArtist = arr.filter(function (artist) {
+    if (artist.nationality.includes(nation)) {
+      return true;
+    }
+  });
+  return specArtist;
+}
+
+// console.log(findNation(artists, 'French'));
+
+const frenchArtist = artists.filter((artist) =>
+  artist.nationality.includes("Dutch")
+);
+
+console.log(frenchArtist);
 
 /* 🛑🛑🛑🛑🛑 Please do not modify anything below this line 🛑🛑🛑🛑🛑*/
 function foo() {
